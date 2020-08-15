@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Lenses</title>
+
+    <style>
+        b1 {
+            font-size: 150%;
+            font-family:"boonjot";
+        }
+
+        b2 {
+            font-size: 120%;
+            font-family:"boonjot";
+        }
+
+        .button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #48cce4;
+            border: none;
+            color: rgb(50, 58, 163);
+            text-align: center;
+            font-size: 25px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            font-family:"boonjot";
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        fieldset {
+            width: 600px;
+            margin: auto;
+            border: 1px solid #231f20;
+        }
+
+        body {
+
+            background-image: url('image/BG1.jpg');
+            background-repeat : no-repeat;
+            background-position : center top;
+            margin-top: 0px;
+            background-attachment:fixed;
+            
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form name="text">
+        <fieldset>
+            <form id="Age">
+                <b1>Age :</b1>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Age" value="1" id="Age">
+                <b2>Young</b2>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Age" value="2" id="Age">
+                <b2>Pre-Presbyopic</b2>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Age" value="3" id="Age">
+                <b2>Presbyopic</b2>
+                <br>
+            </form>
+            <form id="Spectacle_Prescription">
+                <b1>Spectacle Prescription :</b1>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Spectacle_Prescription" value="1" id="Spectacle_Prescription">
+                <b2>Myope</b2>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Spectacle_Prescription" value="2" id="Spectacle_Prescription">
+                <b2>Hypermetrope</b2>
+                <br>
+            </form>
+            <form id="Astigmatic">
+                <b1>Astigmatic :</b1>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Astigmatic" value="1" id="Astigmatic">
+                <b2>No</b2>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Astigmatic" value="2" id="Astigmatic">
+                <b2>Yes</b2>
+                <br>
+            </form>
+            <form id="Tear_Production_Rate">
+                <b1>Tear Production Rate :</b1>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Tear_Production_Rate" value="1" id="Tear_Production_Rate">
+                <b2>Reduced</b2>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="Tear_Production_Rate" value="2" id="Tear_Production_Rate">
+                <b2>Normal</b2>
+                <br>
+            </form>
+            <center>
+                <button type="button" class="button" style="vertical-align:middle" onclick="myAnswer()">
+                    <span>
+                        <b>Submit</b>
+                    </span>
+                </button>
+            </center>
+
+        </fieldset>
+    </form>
+    <script>
+        function myAnswer() {
+            var Age = document.querySelector('input[id="Age"]:checked');
+            var Spectacle_Prescription = document.querySelector('input[id="Spectacle_Prescription"]:checked');
+            var Astigmatic = document.querySelector('input[id="Astigmatic"]:checked');
+            var Tear_Production_Rate = document.querySelector('input[id="Tear_Production_Rate"]:checked');
+
+            if(Tear_Production_Rate == null || Spectacle_Prescription == null || Astigmatic == null || Age == null){
+                alert("Please check the information")
+            }
+
+            else if (Tear_Production_Rate.value == 1) {
+                document.location.href = 'Answer/Answer_not.html'
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 1 && Astigmatic.value == 2) {
+                document.location.href = "Answer/Answer_hard.html"
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 1 && Astigmatic.value == 1 && Age.value == 1) {
+                document.location.href = "Answer/Answer_soft.html"
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 1 && Astigmatic.value == 1 && Age.value == 2) {
+                document.location.href = "Answer/Answer_soft.html"
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 1 && Astigmatic.value == 1 && Age.value == 3) {
+                document.location.href = "Answer/Answer_not.html"
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 2 && Astigmatic.value == 2 && Age.value == 1) {
+                document.location.href = "Answer/Answer_hard.html"
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 2 && Astigmatic.value == 2 && Age.value == 2) {
+                document.location.href = "Answer/Answer_not.html"
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 2 && Astigmatic.value == 2 && Age.value == 3) {
+                document.location.href = "Answer/Answer_not.html"
+            }
+
+            else if (Tear_Production_Rate.value == 2 && Spectacle_Prescription.value == 2 && Astigmatic.value == 1) {
+                document.location.href = "Answer/Answer_soft.html"
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
